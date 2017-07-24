@@ -2,7 +2,7 @@ import numpy as np
 import cv2
 import time
 
-im = 'fuz.jpg'
+im = 'img0.jpg'
 
 im = cv2.imread(im)
 
@@ -14,16 +14,41 @@ def addWhiteBorder(im):
 	return null
 
 def getContours(im):
-	#TODO
-	return []
+	imgray = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
+	imgray = cv2.bilateralFilter(imgray, 11, 17, 17)
+	ret, thresh = cv2.threshold(imgray, 240, 240, 0)
+	im2, contours, hierarchy = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+	return contours
 
 def getImageContour(contours):
-	#TODO
-	return []
+	contours = sorted(contours, key = cv2.contourArea, reverse = True)[:10]
+	image_contour = None
+	count = 0
+	for contour in contours:
+		peri = cv2.arcLength(contour, True)
+		approx = cv2.approxPolyDP(contour, 0.02 * peri, True)
 
-def saveCroppedImage(im, screen_contour):
-	#TODO
-	return null
+		if len(approx) == 4:
+			image_contour = approx
+			count = count + 1
+			if count > 1:
+				print image_contour
+				break
+
+	return image_contour
+
+def saveCroppedImage(im, image_contour):
+	cv2.drawContours(im, [screen_contour], -1, (255,255,0), 3)
+	cv2.imwrite('im_with_contour.jpg',im)
+
+	y0 = min(screen_contour[0][0][1],screen_contour[1][0][1],screen_contour[2][0][1],screen_contour[3][0][1])
+	y1 = max(screen_contour[0][0][1],screen_contour[1][0][1],screen_contour[2][0][1],screen_contour[3][0][1])
+
+	x0 = min(screen_contour[0][0][0],screen_contour[1][0][0],screen_contour[2][0][0],screen_contour[3][0][0])
+	x1 = max(screen_contour[0][0][0],screen_contour[1][0][0],screen_contour[2][0][0],screen_contour[3][0][0])
+	print y0,y1,x0,x1
+	im_cropped = im[y0:y1, x0:x1]
+	cv2.imwrite('im_cropped.jpg',im_cropped)
 
 imgray = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
 imgray = cv2.bilateralFilter(imgray, 11, 17, 17)
@@ -56,7 +81,7 @@ for contour in contours:
 			break
 
 # show the screen_contour on the image
-# cv2.drawContours(im, [screen_contour], -1, (255,255,0), 3)
+cv2.drawContours(im, [screen_contour], -1, (255,255,0), 3)
 
 
 cv2.imwrite('im_with_contour.jpg',im)
