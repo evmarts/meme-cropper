@@ -14,6 +14,11 @@ def addWhiteBorder(im_naked):
 	                      (bordered_size[1]-naked_size[1])/2))
 	return im_bordered
 
+# converts PIL image format to OpenCV format
+def convertPILtoOpenCV(im):
+	open_cv_image = numpy.array(im)[:, :, ::-1].copy()
+	return open_cv_image
+
 # Use OpenCV to find the contours of the input image.s
 def getContours(im):
 	im_gray = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
@@ -25,20 +30,22 @@ def getContours(im):
 # Select the second largest rectangular contour, this is the contour
 # of the Twitter pic
 def getPicContour(contours):
+	# sort the contours by area, of these, take the top ten largest contours
 	contours = sorted(contours, key = cv2.contourArea, reverse = True)[:10]
 	pic_contour = None
 	count = 0
 	for contour in contours:
+		# approximate the shape of the contour
 		peri = cv2.arcLength(contour, True)
 		approx = cv2.approxPolyDP(contour, 0.02 * peri, True)
 		if len(approx) == 4:
 			pic_contour = approx
 			count = count + 1
-			if count > 1:
+			if count == 2:
 				break
 	return pic_contour
 
-# Selects the min, max pair of coords for the Twitter pic's height and width
+# Selects the image coords for the Twitter pic
 def getContourCoords(pic_contour):
 	y0 = min(pic_contour[0][0][1],pic_contour[1][0][1],pic_contour[2][0][1],pic_contour[3][0][1])
 	y1 = max(pic_contour[0][0][1],pic_contour[1][0][1],pic_contour[2][0][1],pic_contour[3][0][1])
@@ -46,16 +53,11 @@ def getContourCoords(pic_contour):
 	x1 = max(pic_contour[0][0][0],pic_contour[1][0][0],pic_contour[2][0][0],pic_contour[3][0][0])
 	return (y0,y1,x0,x1)
 
-# Crop the input image around the Twitter pic contour, and save the cropped image
+# Crop the input image around the Twitter pic coords, and save the cropped image
 def saveCroppedImage(im, pic_contour):
 	(y0,y1,x0,x1) = getContourCoords(pic_contour)
 	im_cropped = im[y0:y1, x0:x1]
-	cv2.imwrite('im_cropped.jpg',im_cropped)
-
-# converts PIL image format to OpenCV format
-def convertPILtoOpenCV(im):
-	open_cv_image = numpy.array(im)[:, :, ::-1].copy()
-	return open_cv_image
+	cv2.imwrite('im_croppeds.jpg',im_cropped)
 
 def main():
 	# im_path = 'img7.jpg'
