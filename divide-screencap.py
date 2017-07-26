@@ -61,7 +61,7 @@ def saveCroppedImages(im, pic_contour, im_path):
 	(y0,y1,x0,x1) = getContourCoords(pic_contour)
 	# save the Twitter pic
 	im_cropped = im[y0:y1, x0:x1]
-	cv2.imwrite(im_path.strip('.jpg') + '_image.jpg',im_cropped)
+	cv2.imwrite(im_path.strip('.jpg') + '_pic.jpg',im_cropped)
 	# save the Twitter text
 	text_cropped = im[0:y0,:]
 	cv2.imwrite(im_path.strip('.jpg') + '_text.jpg',text_cropped)
