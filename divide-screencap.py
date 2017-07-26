@@ -56,22 +56,23 @@ def getContourCoords(pic_contour):
 	return (y0,y1,x0,x1)
 
 # Crop the input image around the Twitter pic coords, and save the cropped image
-def saveCroppedImages(im, pic_contour):
+# also crops the input image around the Twitter text, and saves the cropped text
+def saveCroppedImages(im, pic_contour, im_path):
 	(y0,y1,x0,x1) = getContourCoords(pic_contour)
 	# save the Twitter pic
 	im_cropped = im[y0:y1, x0:x1]
-	cv2.imwrite('im_cropped.jpg',im_cropped)
+	cv2.imwrite(im_path.strip('.jpg') + '_image.jpg',im_cropped)
 	# save the Twitter text
 	text_cropped = im[0:y0,:]
-	cv2.imwrite('text_cropped.jpg',text_cropped)
+	cv2.imwrite(im_path.strip('.jpg') + '_text.jpg',text_cropped)
 
 def main():
-	im_path = raw_input("Image to crop: ")
+	im_path = raw_input("Image to crop: \n")
 	im_naked = Image.open(im_path)
 	im_bordered = addWhiteBorder(im_naked)
 	im = convertPILtoOpenCV(im_bordered)
 	contours = getContours(im)
 	pic_contour = getPicContour(contours)
-	saveCroppedImages(im, pic_contour)
+	saveCroppedImages(im, pic_contour, im_path)
 
 main()
