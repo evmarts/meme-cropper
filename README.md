@@ -5,18 +5,14 @@ Recognizes the text component and the image component of a meme.
 ### Motivation: 
 Instagram memes, which are just screencaps of Twitter posts, typically look like the following:
 
-![](../twitter-screencap-cropper/docs/sample_meme.jpg)
+<img src="./docs/sample_meme.jpg" width="512px" alt="">
 
 We may want to: 
 
 1. Recognize what portion of the meme belongs to the text component.
 2. Recognize what portion of the meme belongs to the image component.
 
-
-![](https://raw.githubusercontent.com/evmarts/twitter-screencap-cropper/docs/sample_meme_contours.jpg)
-
-
-![](../twitter-screencap-cropper/docs/sample_meme_contours.jpg)
+<img src="./docs/sample_meme_contours.jpg" width="512px" alt="">
 
 Once we have partitioned the meme, we can save an image of each partition for later use.
 
