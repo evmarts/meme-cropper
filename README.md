@@ -12,7 +12,9 @@ We may want to:
 1. Recognize what portion of the meme belongs to the text component.
 2. Recognize what portion of the meme belongs to the image component.
 
-<img src="./docs/sample_meme_contours" width="512px">
+
+![](https://raw.githubusercontent.com/evmarts/twitter-screencap-cropper/docs/sample_meme_contours.jpg)
+
 
 ![](../twitter-screencap-cropper/docs/sample_meme_contours.jpg)
 
