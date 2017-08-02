@@ -25,8 +25,12 @@ $ python divide-screencap.py
 Image to crop: sample_meme.jpg
 ~~~
 
-Saves two images: *sample\_meme_text.jpg* and *sample\_meme_pic.jpg* to the working directory
+Saves two images:
 
+~~~
+Text component saved as: sample_meme_text.jpg
+Image component saved as: sample_meme_pic.jpg
+~~~
 
 
 
