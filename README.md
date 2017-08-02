@@ -12,6 +12,8 @@ We may want to:
 1. Recognize what portion of the meme belongs to the text component.
 2. Recognize what portion of the meme belongs to the image component.
 
+<img src="./docs/sample_meme_contours" width="512px">
+
 ![](../twitter-screencap-cropper/docs/sample_meme_contours.jpg)
 
 Once we have partitioned the meme, we can save an image of each partition for later use.
