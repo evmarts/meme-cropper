@@ -1,4 +1,4 @@
-# twitter-screencap-cropper
+# meme-cropper
 
 Recognizes the text component and the image component of a meme. 
 
