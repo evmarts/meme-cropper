@@ -1,27 +1,31 @@
 # twitter-screencap-cropper
-Crops out the image from screencap of Twitter posts
+
+Recognizes the text component and the image component of a meme. 
 
 ### Motivation: 
-Instagram post typically look like the following:
+Instagram memes, which are just screencaps of Twitter posts, typically look like the following:
 
-![](/Users/evanmartin/Desktop/twitter-screencap-cropper/sample_meme_optimal.jpg)
+![](../twitter-screencap-cropper/docs/sample_meme.jpg)
 
-However, scraped images are usually less uniform in style:
+We may want to: 
 
+1. Recognize what portion of the meme belongs to the text component.
+2. Recognize what portion of the meme belongs to the image component.
 
-![](/Users/evanmartin/Desktop/twitter-screencap-cropper/sample_meme_badborder.jpg)
+![](../twitter-screencap-cropper/docs/sample_meme_contours.jpg)
 
+Once we have partitioned the meme, we can save an image of each partition for later use.
 
-![](/Users/evanmartin/Desktop/twitter-screencap-cropper/sample_meme_badfont.jpg)
+### divide-screencap.py
 
-which is bad if you want to repost these images and keep a neat-looking Instagram page
+Prompts user for an image:
 
-So we want a way to take an image scraped off another Instagram account and extract the image as well as the text, so that we may create a new Instagram post in the format we like. 
+~~~
+$ python divide-screencap.py
+Image to crop: sample_meme.jpg
+~~~
 
-This script takes an Instagram post and extracts the Twiter pic image.
-
-
-
+Saves two images: *sample\_meme_text.jpg* and *sample\_meme_pic.jpg* to the working directory
 
 
 
