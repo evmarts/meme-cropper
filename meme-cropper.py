@@ -10,10 +10,9 @@ import time
 # second largest rectangular contour will always be the Twitter pic.	
 def addWhiteBorder(im_naked):
 	naked_size = im_naked.size
-	bordered_size = (800, 800)
+	bordered_size = (int(naked_size[0]*1.1), int(naked_size[1]*1.1))
 	im_bordered = Image.new("RGB", bordered_size, color = (255,255,255))
-	im_bordered.paste(im_naked, ((bordered_size[0]-naked_size[0])/2,
-	                      (bordered_size[1]-naked_size[1])/2))
+	im_bordered.paste(im_naked, ((bordered_size[0]-naked_size[0])/2,(bordered_size[1]-naked_size[1])/2))
 	return im_bordered
 
 # converts PIL image format to OpenCV format
@@ -21,7 +20,7 @@ def convertPILtoOpenCV(im):
 	open_cv_image = numpy.array(im)[:, :, ::-1].copy()
 	return open_cv_image
 
-# Use OpenCV to find the contours of the input image.s
+# Use OpenCV to find the contours of the input image
 def getContours(im):
 	im_gray = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
 	im_gray = cv2.bilateralFilter(im_gray, 11, 17, 17)
@@ -59,12 +58,10 @@ def getContourCoords(pic_contour):
 # also crops the input image around the Twitter text, and saves the cropped text
 def saveCroppedImages(im, pic_contour, im_path):
 	(y0,y1,x0,x1) = getContourCoords(pic_contour)
-	# save the Twitter text
 	text_cropped = im[0:y0,:]
 	text_img_name = im_path.strip('.jpg') + '_text.jpg'
 	cv2.imwrite(text_img_name,text_cropped)
 	print "Text component saved as: " + str(text_img_name)
-	# save the Twitter pic
 	im_cropped = im[y0:y1, x0:x1]
 	pic_img_name = im_path.strip('.jpg') + '_pic.jpg'
 	cv2.imwrite(pic_img_name,im_cropped)
