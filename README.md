@@ -16,7 +16,7 @@ We may want to:
 
 Once we have partitioned the meme, we can save an image of each partition for later use.
 
-### divide-screencap.py
+### meme-cropper.py
 
 Prompts user for an image:
 
