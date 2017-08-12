@@ -35,7 +35,6 @@ Text component saved as: out/text.jpg
 
 ~~~
 Image component saved as: out/pic.jpg
-g
 ~~~
 
 <img src="./figures/pic.jpg" width="256px" alt=""> pic.jpg
