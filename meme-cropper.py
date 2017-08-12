@@ -59,16 +59,16 @@ def getContourCoords(pic_contour):
 def saveCroppedImages(im, pic_contour, im_path):
 	(y0,y1,x0,x1) = getContourCoords(pic_contour)
 	text_cropped = im[0:y0,:]
-	text_img_name = im_path.strip('.jpg') + '_text.jpg'
+	text_img_name = "out/text.jpg"
 	cv2.imwrite(text_img_name,text_cropped)
 	print "Text component saved as: " + str(text_img_name)
 	im_cropped = im[y0:y1, x0:x1]
-	pic_img_name = im_path.strip('.jpg') + '_pic.jpg'
+	pic_img_name = "out/pic.jpg"
 	cv2.imwrite(pic_img_name,im_cropped)
 	print "Image component saved as: " + str(pic_img_name)
 
 def main():
-	im_path = raw_input("Image to crop: \n")
+	im_path = "in/" + raw_input("Image to crop: in/")
 	im_naked = Image.open(im_path)
 	im_bordered = addWhiteBorder(im_naked)
 	im = convertPILtoOpenCV(im_bordered)
