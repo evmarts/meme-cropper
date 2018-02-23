@@ -47,14 +47,7 @@ Run the script:
 
 Suppose we have the following images stored in the ```in/``` directory:
 
-<img src="./figures/sample/sample0.jpg" width="100px" alt="">
-<img src="./figures/sample/sample1.jpg" width="100px" alt="">
-<img src="./figures/sample/sample2.jpg" width="100px" alt="">
-<img src="./figures/sample/sample3.jpg" width="100px" alt="">
-<img src="./figures/sample/sample4.jpg" width="100px" alt="">
-<img src="./figures/sample/sample5.jpg" width="100px" alt="">
-<img src="./figures/sample/sample6.jpg" width="100px" alt="">
-<img src="./figures/sample/sample7.jpg" width="100px" alt="">
+<img src="./figures/sample/sample0.jpg" width="100px" alt=""><img src="./figures/sample/sample1.jpg" width="100px" alt=""><img src="./figures/sample/sample2.jpg" width="100px" alt=""><img src="./figures/sample/sample3.jpg" width="100px" alt=""><img src="./figures/sample/sample4.jpg" width="100px" alt=""><img src="./figures/sample/sample5.jpg" width="100px" alt=""><img src="./figures/sample/sample6.jpg" width="100px" alt=""><img src="./figures/sample/sample7.jpg" width="100px" alt="">
 
 We will run the Python script
 
@@ -71,25 +64,11 @@ Image component saved as: out/pic/sample7pic.jpg
 
 The text components of the images are stored in the ```out/text/``` directory: 
 
-<img src="./figures/texts/sample0text.jpg" width="100px" alt="">
-<img src="./figures/texts/sample1text.jpg" width="100px" alt="">
-<img src="./figures/texts/sample2text.jpg" width="100px" alt="">
-<img src="./figures/texts/sample3text.jpg" width="100px" alt="">
-<img src="./figures/texts/sample4text.jpg" width="100px" alt="">
-<img src="./figures/texts/sample5text.jpg" width="100px" alt="">
-<img src="./figures/texts/sample6text.jpg" width="100px" alt="">
-<img src="./figures/texts/sample7text.jpg" width="100px" alt="">
+<img src="./figures/texts/sample0text.jpg" width="100px" alt=""><img src="./figures/texts/sample1text.jpg" width="100px" alt=""><img src="./figures/texts/sample2text.jpg" width="100px" alt=""><img src="./figures/texts/sample3text.jpg" width="100px" alt=""><img src="./figures/texts/sample4text.jpg" width="100px" alt=""><img src="./figures/texts/sample5text.jpg" width="100px" alt=""><img src="./figures/texts/sample6text.jpg" width="100px" alt=""><img src="./figures/texts/sample7text.jpg" width="100px" alt="">
 
 and the attachment components are stored in the ```out/pics``` directory:
 
-<img src="./figures/pics/sample0pic.jpg" width="100px" alt="">
-<img src="./figures/pics/sample1pic.jpg" width="100px" alt="">
-<img src="./figures/pics/sample2pic.jpg" width="100px" alt="">
-<img src="./figures/pics/sample3pic.jpg" width="100px" alt="">
-<img src="./figures/pics/sample4pic.jpg" width="100px" alt="">
-<img src="./figures/pics/sample5pic.jpg" width="100px" alt="">
-<img src="./figures/pics/sample6pic.jpg" width="100px" alt="">
-<img src="./figures/pics/sample7pic.jpg" width="100px" alt="">
+<img src="./figures/pics/sample0pic.jpg" width="100px" alt=""><img src="./figures/pics/sample1pic.jpg" width="100px" alt=""><img src="./figures/pics/sample2pic.jpg" width="100px" alt=""><img src="./figures/pics/sample3pic.jpg" width="100px" alt=""><img src="./figures/pics/sample4pic.jpg" width="100px" alt=""><img src="./figures/pics/sample5pic.jpg" width="100px" alt=""><img src="./figures/pics/sample6pic.jpg" width="100px" alt=""><img src="./figures/pics/sample7pic.jpg" width="100px" alt="">
 
 ## Notes
 
