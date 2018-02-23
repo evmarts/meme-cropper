@@ -2,6 +2,7 @@ from PIL import Image
 import numpy
 import cv2
 import time
+import os
 
 ## note: (0,0) is upper left corner of image
 
@@ -59,21 +60,41 @@ def getContourCoords(pic_contour):
 def saveCroppedImages(im, pic_contour, im_path):
 	(y0,y1,x0,x1) = getContourCoords(pic_contour)
 	text_cropped = im[0:y0,:]
-	text_img_name = "out/text.jpg"
+	text_img_name = "out/" + im_path.replace("in/","text/").replace(".jpg","").replace("jpeg", "").replace(".png","") + "text.jpg"
 	cv2.imwrite(text_img_name,text_cropped)
 	print "Text component saved as: " + str(text_img_name)
 	im_cropped = im[y0:y1, x0:x1]
-	pic_img_name = "out/pic.jpg"
+	pic_img_name = "out/" + im_path.replace("in/","pic/").replace(".jpg","").replace("jpeg", "").replace(".png","") + "pic.jpg"
 	cv2.imwrite(pic_img_name,im_cropped)
 	print "Image component saved as: " + str(pic_img_name)
 
-def main():
-	im_path = "in/" + raw_input("Image to crop: in/")
+def crop(im_path):
+	# im_path = "in/" + raw_input("Image to crop: in/")
 	im_naked = Image.open(im_path)
 	im_bordered = addWhiteBorder(im_naked)
 	im = convertPILtoOpenCV(im_bordered)
 	contours = getContours(im)
 	pic_contour = getPicContour(contours)
 	saveCroppedImages(im, pic_contour, im_path)
+
+def is_img(path):
+	ext = path[-4:]
+	if (ext == ".jpg") or (ext == ".png") or (ext == "jpeg"):
+		return True
+	return False
+
+def get_im_paths(files):
+	pic_paths = []
+	for file in files:
+		if is_img(file):
+			pic_paths.append(file)
+	return pic_paths
+
+
+def main():
+	dir_path = os.listdir("../meme-cropper/in/")
+	im_paths = get_im_paths(dir_path)
+	for path in im_paths:
+		crop("in/" + path)
 
 main()
