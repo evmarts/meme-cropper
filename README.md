@@ -9,7 +9,7 @@ The Twitter-screenshot meme is an image file that contains a text component and 
 
 I will refer to the image below the text as an "attachment" as to avoid confusion with the entire image of the meme. 
 
-For applications, we may want to analysis the contents of a meme. As examples, we may want to determine the language of the text, determine whose face is in the attachment, put the text through a spellcheck, or recycle the meme into a new format. Unfortunately, since the text and the attachment reside in a single image, it is difficult for computers to analysis them separately. So we may seek to partition the image into two new image files, an image for each component. 
+For applications, we may want to analyze the contents of a meme. As examples, we may want to determine the language of the text, determine whose face is in the attachment, put the text through a spellcheck, or recycle the meme into a new format. Unfortunately, since the text and the attachment reside in a single image, it is difficult for computers to analysis them separately. So we may seek to partition the image into two new image files, an image for each component. 
 
 To break the image down into its two components, we need to recognize the boundaries of the components and then crop.
 
